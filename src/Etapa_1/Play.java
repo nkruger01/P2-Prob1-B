@@ -6,6 +6,12 @@ public class Play implements FormatoAudio{
 	public void setFile(String nomeArquivo) {
 		System.out.println("O nome do arquivo utilizado é: " + nomeArquivo);
 	}
+	public void setLocation(int posicaoArquivo) {
+		if (posicaoArquivo < 0) {
+			throw new IllegalArgumentException("Posição inválida!");
+		}
+		System.out.println("O arquivo iniciará a partir de: "+ posicaoArquivo);
+	}
 
 	@Override
 	public void Abrir(String nomeArquivo) {
