@@ -1,4 +1,4 @@
-package Etapa_2;
+package Teste;
 
 public class AACPlayer implements Facade{
 	
@@ -26,7 +26,7 @@ public class AACPlayer implements Facade{
 		if (posicaoArquivo < 0) {
 			throw new IllegalArgumentException("Posição inválida!");
 		}else if(posicaoArquivo == 0){
-			System.out.println("O arquivo iniciará a partir do início: "+ posicaoArquivo);
+			System.out.println("O arquivo iniciará a partir do início.");
 		}
 		System.out.println("O arquivo iniciará a partir de: "+ posicaoArquivo);
 	}
