@@ -8,11 +8,10 @@ public class ContaCorrente {
     private Cliente cliente;
     private int saldo;
     private int investimento;
-    private String[] tipoServicos;
 
     public Operacao sacar(int valor) {
-        String str = "";
-
+        String str;
+        Servicos servico = new Servicos();
         if (saldo >= valor) {
             Operacao operacao = new Operacao();
             operacao.setValor(valor);
@@ -22,10 +21,8 @@ public class ContaCorrente {
             operacao.setData(Calendar.getInstance().getTime());
             this.saldo = saldo - valor;
             str = "Saque realizado. Saldo atual: " + saldo;
-
-//            for(int i = 0; i > tipoServicos.length-1; i++){
-//                str += tipoServicos[i] + "/n";
-//            }
+            str += servico.notificacaoSaque(this, cliente);
+            str += " " + servico.ofertaFinanciamento(cliente, this);
             return operacao;
         } else if ((investimento + saldo) >= valor) {
             investimento = investimento + saldo;
@@ -39,8 +36,8 @@ public class ContaCorrente {
     }
 
     public Operacao depositar(int valor) {
-        String str = "";
-
+        String str;
+        Servicos servico = new Servicos();
         Operacao operacao = new Operacao();
         operacao.setValor(valor);
         operacao.setSaldoAnterior(saldo);
@@ -49,16 +46,14 @@ public class ContaCorrente {
         operacao.setData(Calendar.getInstance().getTime());
         this.saldo = saldo + valor;
         str = "Depósito realizado. Saldo atual: " + saldo;
+        str += servico.notificacaoDeposito(this, cliente);
 
-//        for(int i = 0; i > tipoServicos.length; i++){
-//                str += tipoServicos[i] + "/n";
-//        }
         return operacao;
     }
 
     public OperacaoTransferencia transferir(int valor, ContaCorrente contaDestino) {
-        String str = "";
-
+        String str;
+        Servicos servico = new Servicos();
         if (saldo >= valor) {
             OperacaoTransferencia opTrans = new OperacaoTransferencia();
             opTrans.setContaPartida(this);
@@ -72,10 +67,7 @@ public class ContaCorrente {
             setSaldo(saldo - valor);
             receberTransferencia(valor, contaDestino);
             str = "Transferencia realizada. Saldo atual: " + saldo;
-
-//        for(int i = 0; i > tipoServicos.length; i++){
-//                str += tipoServicos[i] + "/n";
-//        }
+            str += servico.notificacaoTransferencia(this, cliente);
             return opTrans;
         } else if ((investimento + saldo) >= valor) {
             investimento = investimento + saldo;
@@ -89,8 +81,7 @@ public class ContaCorrente {
     }
 
     public OperacaoTransferencia receberTransferencia(int valor, ContaCorrente destino) {
-        String str = "";
-        
+        String str;
         OperacaoTransferencia opTrans = new OperacaoTransferencia();
         opTrans.setContaPartida(this);
         opTrans.setValor(valor);
@@ -101,13 +92,11 @@ public class ContaCorrente {
 
         destino.setSaldo(destino.getSaldo() + valor);
         str = "Transferencia recebida. Saldo atual: " + saldo;
-
-//        for(int i = 0; i > tipoServicos.length; i++){
-//                str += tipoServicos[i] + "/n";
-//        }
         return opTrans;
     }
 
+    //==================================================================//
+    //==================================================================//
     public ContaCorrente(Cliente cliente, int numero, int agencia, int saldo, int investimento) {
         this.cliente = cliente;
         this.numero = numero;
