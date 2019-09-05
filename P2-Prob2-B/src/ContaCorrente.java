@@ -1,103 +1,60 @@
+package src;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Observable;
 
-public class ContaCorrente {
+public class ContaCorrente extends Observable{
 
     private int numero;
     private int agencia;
     private Cliente cliente;
-    private int saldo;
-    private int investimento;
-
-    public Operacao sacar(int valor) {
-        String str;
-        Servicos servico = new Servicos();
-        if (saldo >= valor) {
-            Operacao operacao = new Operacao();
-            operacao.setValor(valor);
-            operacao.setSaldoAnterior(saldo);
-            operacao.setTipo(TipoOperacao.SAIDA);
-            operacao.setConta(this);
-            operacao.setData(Calendar.getInstance().getTime());
-            this.saldo = saldo - valor;
-            str = "Saque realizado. Saldo atual: " + saldo;
-            str += servico.notificacaoSaque(this, cliente);
-            str += " " + servico.ofertaFinanciamento(cliente, this);
-            return operacao;
-        } else if ((investimento + saldo) >= valor) {
-            investimento = investimento + saldo;
-            saldo = 0;
-            investimento = investimento - valor;
-        } else {
-            throw new IllegalArgumentException("Saldo insuficiente");
-        }
-
-        return null;
+    private double saldo;
+    private double investimento;
+    private ArrayList<Operacao> operacoes = new ArrayList<Operacao>();
+    private ArrayList<Servico> servicos = new ArrayList<Servico>();
+    
+    public void adicionarServico(Servico servico){    	
+    	servicos.add(servico);
+    	setChanged();
+        notifyObservers();    	
     }
 
-    public Operacao depositar(int valor) {
-        String str;
-        Servicos servico = new Servicos();
-        Operacao operacao = new Operacao();
-        operacao.setValor(valor);
-        operacao.setSaldoAnterior(saldo);
-        operacao.setTipo(TipoOperacao.ENTRADA);
-        operacao.setConta(this);
-        operacao.setData(Calendar.getInstance().getTime());
-        this.saldo = saldo + valor;
-        str = "Depósito realizado. Saldo atual: " + saldo;
-        str += servico.notificacaoDeposito(this, cliente);
+    public void sacar(double valor) {
+    	
+    	if(getSaldo() >= valor){
+    		System.out.println("Cliente " + this.cliente.nome + " sacou R$ " + valor + " da conta " + this.numero);
+    	}else{
+    		System.out.println("Valor excede o saldo em conta");
+    	}
 
-        return operacao;
     }
 
-    public OperacaoTransferencia transferir(int valor, ContaCorrente contaDestino) {
-        String str;
-        Servicos servico = new Servicos();
-        if (saldo >= valor) {
-            OperacaoTransferencia opTrans = new OperacaoTransferencia();
-            opTrans.setContaPartida(this);
-
-            opTrans.setValor(valor);
-            opTrans.setSaldoAnterior(saldo);
-            opTrans.setTipo(TipoOperacao.SAIDA);
-            opTrans.setConta(this);
-            opTrans.setData(Calendar.getInstance().getTime());
-
-            setSaldo(saldo - valor);
-            receberTransferencia(valor, contaDestino);
-            str = "Transferencia realizada. Saldo atual: " + saldo;
-            str += servico.notificacaoTransferencia(this, cliente);
-            return opTrans;
-        } else if ((investimento + saldo) >= valor) {
-            investimento = investimento + saldo;
-            saldo = 0;
-            investimento = investimento - valor;
-        } else {
-            throw new IllegalArgumentException("Valores inválidos.");
-        }
-
-        return null;
+    public void depositar(double valor) {
+        
+    	this.saldo = this.getSaldo() + valor;
+    	System.out.println("Cliente " + this.cliente.nome + " depositou R$ " + valor + " na conta " + this.numero);
+    	
     }
 
-    public OperacaoTransferencia receberTransferencia(int valor, ContaCorrente destino) {
-        String str;
-        OperacaoTransferencia opTrans = new OperacaoTransferencia();
-        opTrans.setContaPartida(this);
-        opTrans.setValor(valor);
-        opTrans.setSaldoAnterior(destino.getSaldo());
-        opTrans.setTipo(TipoOperacao.ENTRADA);
-        opTrans.setConta(destino);
-        opTrans.setData(Calendar.getInstance().getTime());
-
-        destino.setSaldo(destino.getSaldo() + valor);
-        str = "Transferencia recebida. Saldo atual: " + saldo;
-        return opTrans;
+    public void transferir(double valor, ContaCorrente contaDestino) {
+    	
+    	if(getSaldo() >= valor){
+    		this.saldo = this.getSaldo() - valor;
+    		contaDestino.saldo = contaDestino.getSaldo() + valor;
+    		System.out.println("Cliente " + this.cliente.nome + " depositou R$ " + valor + " na conta " + contaDestino.getNumero());
+    	}else{
+    		System.out.println("Valor da tranfer�ncia excede o saldo em conta");
+    	}
+    	
     }
-
+    
     //==================================================================//
     //==================================================================//
-    public ContaCorrente(Cliente cliente, int numero, int agencia, int saldo, int investimento) {
+    public ContaCorrente(){    	
+    }
+    
+    public ContaCorrente(Cliente cliente, int numero, int agencia, double saldo, double investimento) {
         this.cliente = cliente;
         this.numero = numero;
         this.agencia = agencia;
@@ -129,12 +86,22 @@ public class ContaCorrente {
         this.cliente = cliente;
     }
 
-    public int getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(int saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 
+	public double getInvestimento() {
+		return investimento;
+	}
+
+	public void setInvestimento(double investimento) {
+		this.investimento = investimento;
+	}
+
+    
+    
 }

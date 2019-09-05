@@ -1,14 +1,27 @@
+package src;
 
+import java.util.Date;
 
 public class OperacaoTransferencia extends Operacao{
-    private ContaCorrente contaPartida;
+	
+    private ContaCorrente contaCorrente;
+            
+    public OperacaoTransferencia() {
+    
+	}
 
-    public ContaCorrente getContaPartida() {
-        return contaPartida;
+	public OperacaoTransferencia(double valor, double saldoAnterior, ContaCorrente conta, Date data, TipoOperacao tipo,
+			ContaCorrente contaCorrente) {
+		super(valor, saldoAnterior, conta, data, tipo);
+		this.contaCorrente = contaCorrente;
+	}
+
+    public ContaCorrente getContaCorrente() {
+        return contaCorrente;
     }
 
-    public void setContaPartida(ContaCorrente contaPartida) {
-        this.contaPartida = contaPartida;
+    public void setContaCorrente(ContaCorrente contaCorrente) {
+        this.contaCorrente = contaCorrente;
     }
 
 }
