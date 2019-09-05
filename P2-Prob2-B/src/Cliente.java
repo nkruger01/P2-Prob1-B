@@ -1,3 +1,5 @@
+package src;
+
 public class Cliente {
     public String nome;
     public String telFixo;

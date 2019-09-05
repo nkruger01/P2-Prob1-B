@@ -1,27 +1,41 @@
+package src;
 
-import java.util.Calendar;
 import java.util.Date;
 
 public class Operacao {
-    public int valor;
-    public int saldoAnterior;
+    public double valor;
+    public double saldoAnterior;
     public ContaCorrente conta;
     public Date data;
     public TipoOperacao tipo;
+    
+    
+    
+    public Operacao() {
+		
+	}
 
-    public int getValor() {
+	public Operacao(double valor, double saldoAnterior, ContaCorrente conta, Date data, TipoOperacao tipo) {
+		this.valor = valor;
+		this.saldoAnterior = saldoAnterior;
+		this.conta = conta;
+		this.data = data;
+		this.tipo = tipo;
+	}
+
+	public double getValor() {
         return valor;
     }
 
-    public void setValor(int valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 
-    public int getSaldoAnterior() {
+    public double getSaldoAnterior() {
         return saldoAnterior;
     }
 
-    public void setSaldoAnterior(int saldoAnterior) {
+    public void setSaldoAnterior(double saldoAnterior) {
         this.saldoAnterior = saldoAnterior;
     }
 

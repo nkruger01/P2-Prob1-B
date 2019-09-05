@@ -1,3 +1,5 @@
+package src;
+
 public class ClientePessoaJuridica extends Cliente{
     private int cnpj;
     private String servidorJMS;
