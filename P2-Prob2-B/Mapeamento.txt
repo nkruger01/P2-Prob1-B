@@ -1,0 +1,2 @@
+Observer = Classe Servico
+Observado = Classe ContaCorrente
