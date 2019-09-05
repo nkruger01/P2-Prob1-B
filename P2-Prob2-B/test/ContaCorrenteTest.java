@@ -1,9 +1,16 @@
+package test;
+
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import src.Cliente;
+import src.ContaCorrente;
+import src.Servico;
+
 import static org.junit.Assert.*;
 
 /**
@@ -89,8 +96,11 @@ public class ContaCorrenteTest {
         cliente.setNome("teste");
         cliente.setTelCelular("54545");
         cliente.setTelFixo("54545");
-
+        
         ContaCorrente conta1 = new ContaCorrente(cliente, 3146, 999, 300, 1000);
+        
+        Servico servico = new Servico(conta1, "Serviço em teste");
+        conta1.adicionarServico(servico);
 
     }
 
