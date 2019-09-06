@@ -1,14 +1,23 @@
-package src;
+package Etapa_2.src;
 
-public class ClientePessoaFisica extends Cliente{
-    private int cpf;
-
-    public int getCpf() {
-        return cpf;
+public class ClientePessoaJuridica extends Cliente{
+    private int cnpj;
+    private String servidorJMS;
+    
+    public int getCnpj() {
+        return cnpj;
     }
 
-    public void setCpf(int cpf) {
-        this.cpf = cpf;
+    public void setCnpj(int cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getServidorJMS() {
+        return servidorJMS;
+    }
+
+    public void setServidorJMS(String servidorJMS) {
+        this.servidorJMS = servidorJMS;
     }
 
     public String getNome() {
@@ -34,5 +43,4 @@ public class ClientePessoaFisica extends Cliente{
     public void setTelCelular(String telCelular) {
         this.telCelular = telCelular;
     }
-
 }

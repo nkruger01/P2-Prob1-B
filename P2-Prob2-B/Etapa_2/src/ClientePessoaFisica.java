@@ -1,9 +1,15 @@
-package src;
+package Etapa_2.src;
 
-public class Cliente {
-    public String nome;
-    public String telFixo;
-    public String telCelular;
+public class ClientePessoaFisica extends Cliente{
+    private int cpf;
+
+    public int getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(int cpf) {
+        this.cpf = cpf;
+    }
 
     public String getNome() {
         return nome;
@@ -28,6 +34,5 @@ public class Cliente {
     public void setTelCelular(String telCelular) {
         this.telCelular = telCelular;
     }
-    
-    
+
 }

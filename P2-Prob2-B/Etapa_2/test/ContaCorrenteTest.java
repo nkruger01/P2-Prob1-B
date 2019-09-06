@@ -1,4 +1,4 @@
-package test;
+package Etapa_2.test;
 
 
 import org.junit.After;
@@ -7,9 +7,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import src.Cliente;
-import src.ContaCorrente;
-import src.Servico;
+import Etapa_2.src.Cliente;
+import Etapa_2.src.ContaCorrente;
+import Etapa_2.src.Servico;
 
 import static org.junit.Assert.*;
 
