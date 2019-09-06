@@ -1,4 +1,4 @@
-package src.p2.prob1.b;
+package Etapa_2.p2.prob1.b;
 
 /**
  * Interface responsável por definir a assinatura dos métodos para manipulação

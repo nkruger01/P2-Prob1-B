@@ -1,31 +1,30 @@
-package src.p2.prob1.b.adapter;
+package Etapa_2.p2.prob1.b.adapter;
 
-import src.p2.prob1.b.FormatoAudio;
-import src.problema1.WAVPlayer;
+import Etapa_2.p2.prob1.b.FormatoAudio;
+import Etapa_2.problema1.MP3DJ;
 
-import java.security.InvalidParameterException;
 
-public class FormatoAudioWavAdapter implements FormatoAudio {
+public class FormatoAudioMP3Adapter implements FormatoAudio {
 
-    public FormatoAudioWavAdapter(String arquivo) {
+    public FormatoAudioMP3Adapter(String arquivo) {
         abrir(arquivo);
     }
 
-    private WAVPlayer reprodutor;
+    private MP3DJ reprodutor;
+
 
     @Override
     public void abrir(String arquivo) {
-        if (arquivo == null) {
-            throw new InvalidParameterException("Nome de arquivo de audio INVÃ�LIDO!");
-        }
-
-        reprodutor = new WAVPlayer(arquivo);
+        reprodutor = new MP3DJ();
+        reprodutor.setFile(arquivo);
     }
 
+ 
     @Override
     public void reproduzir() {
         reprodutor.play();
     }
+
 
     @Override
     public void pausar() {
@@ -40,16 +39,16 @@ public class FormatoAudioWavAdapter implements FormatoAudio {
 
     @Override
     public void avancar(int segundos) {
-        reprodutor.forward(segundos * 1000);
-    }
-
-  
-    @Override
-    public void retornar(int segundos) {
-        reprodutor.reward(segundos * 1000);
+        reprodutor.forward(segundos);
     }
 
    
+    @Override
+    public void retornar(int segundos) {
+        reprodutor.reward(segundos);
+    }
+
+
     @Override
     public void liberar() {
         reprodutor = null; 

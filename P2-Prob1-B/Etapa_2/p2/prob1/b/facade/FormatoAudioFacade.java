@@ -1,7 +1,7 @@
-package src.p2.prob1.b.facade;
+package Etapa_2.p2.prob1.b.facade;
 
-import src.p2.prob1.b.FormatoAudio;
-import src.p2.prob1.b.factory.FormatoAudioFactory;
+import Etapa_2.p2.prob1.b.FormatoAudio;
+import Etapa_2.p2.prob1.b.factory.FormatoAudioFactory;
 
 
 public class FormatoAudioFacade {

@@ -1,7 +1,7 @@
-package src.p2.prob1.b.adapter;
+package Etapa_2.p2.prob1.b.adapter;
 
-import src.p2.prob1.b.FormatoAudio;
-import src.problema1.wmaPlay;
+import Etapa_2.p2.prob1.b.FormatoAudio;
+import Etapa_2.problema1.wmaPlay;
 
 import java.security.InvalidParameterException;
 

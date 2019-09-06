@@ -1,17 +1,17 @@
-package src.p2.prob1.b.adapter;
+package Etapa_2.p2.prob1.b.adapter;
 
-import src.p2.prob1.b.FormatoAudio;
-import src.problema1.AIFFSuperPlayer;
+import Etapa_2.p2.prob1.b.FormatoAudio;
+import Etapa_2.problema1.WAVPlayer;
 
 import java.security.InvalidParameterException;
 
-public class FormatoAudioAiffAdapter implements FormatoAudio {
+public class FormatoAudioWavAdapter implements FormatoAudio {
 
-    public FormatoAudioAiffAdapter(String arquivo) {
+    public FormatoAudioWavAdapter(String arquivo) {
         abrir(arquivo);
     }
 
-    private AIFFSuperPlayer reprodutor;
+    private WAVPlayer reprodutor;
 
     @Override
     public void abrir(String arquivo) {
@@ -19,7 +19,7 @@ public class FormatoAudioAiffAdapter implements FormatoAudio {
             throw new InvalidParameterException("Nome de arquivo de audio INVÃ�LIDO!");
         }
 
-        reprodutor = new AIFFSuperPlayer(arquivo);
+        reprodutor = new WAVPlayer(arquivo);
     }
 
     @Override
@@ -29,30 +29,30 @@ public class FormatoAudioAiffAdapter implements FormatoAudio {
 
     @Override
     public void pausar() {
-        reprodutor.pause();
+        reprodutor.stop();
     }
 
     @Override
     public void parar() {
         reprodutor.stop();
-        reprodutor.setCursor(0);
+        reprodutor.reward(reprodutor.reward(0));
     }
 
     @Override
     public void avancar(int segundos) {
-        reprodutor.setCursor(reprodutor.pause() + segundos);
-        reprodutor.play();
+        reprodutor.forward(segundos * 1000);
     }
 
+  
     @Override
     public void retornar(int segundos) {
-        final int localizacaoAtual = reprodutor.pause();
-        reprodutor.setCursor(localizacaoAtual - segundos);
-        reprodutor.play();
+        reprodutor.reward(segundos * 1000);
     }
 
+   
     @Override
     public void liberar() {
-        reprodutor.release();
+        reprodutor = null; 
+        System.gc();
     }
 }
