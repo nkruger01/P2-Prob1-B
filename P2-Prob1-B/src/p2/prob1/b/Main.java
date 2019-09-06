@@ -1,7 +1,7 @@
-package p2.prob1.b;
+package src.p2.prob1.b;
 
-import p2.prob1.b.facade.FormatoAudioFacade;
-import p2.prob1.b.factory.FormatoAudioFactory;
+import src.p2.prob1.b.facade.FormatoAudioFacade;
+import src.p2.prob1.b.factory.FormatoAudioFactory;
 
 public class Main {
 

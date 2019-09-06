@@ -1,7 +1,7 @@
-package p2.prob1.b.adapter;
+package src.p2.prob1.b.adapter;
 
-import p2.prob1.b.FormatoAudio;
-import problema1.wmaPlay;
+import src.p2.prob1.b.FormatoAudio;
+import src.problema1.wmaPlay;
 
 import java.security.InvalidParameterException;
 
@@ -20,7 +20,7 @@ public class FormatoAudioWmaAdapter implements FormatoAudio {
     private wmaPlay reprodutorWma = new wmaPlay();
 
     /**
-     * Localização atual da reprodução do arquivo (em segundos).
+     * LocalizaÃ§Ã£o atual da reproduÃ§Ã£o do arquivo (em segundos).
      */
     private Integer localizaoAudioAuxiliar = 0;
 
@@ -30,7 +30,7 @@ public class FormatoAudioWmaAdapter implements FormatoAudio {
     @Override
     public void abrir(String arquivo) {
         if (arquivo == null) {
-            throw new InvalidParameterException("Nome de arquivo de audio INVÁLIDO!");
+            throw new InvalidParameterException("Nome de arquivo de audio INVÃ�LIDO!");
         }
         if (reprodutorWma == null) {
             reprodutorWma = new wmaPlay();

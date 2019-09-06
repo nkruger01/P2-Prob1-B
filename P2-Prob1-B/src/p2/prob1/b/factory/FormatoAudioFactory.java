@@ -1,11 +1,11 @@
-package p2.prob1.b.factory;
+package src.p2.prob1.b.factory;
 
-import p2.prob1.b.FormatoAudio;
-import p2.prob1.b.adapter.FormatoAudioAacAdapter;
-import p2.prob1.b.adapter.FormatoAudioAiffAdapter;
-import p2.prob1.b.adapter.FormatoAudioMP3Adapter;
-import p2.prob1.b.adapter.FormatoAudioWavAdapter;
-import p2.prob1.b.adapter.FormatoAudioWmaAdapter;
+import src.p2.prob1.b.FormatoAudio;
+import src.p2.prob1.b.adapter.FormatoAudioAacAdapter;
+import src.p2.prob1.b.adapter.FormatoAudioAiffAdapter;
+import src.p2.prob1.b.adapter.FormatoAudioMP3Adapter;
+import src.p2.prob1.b.adapter.FormatoAudioWavAdapter;
+import src.p2.prob1.b.adapter.FormatoAudioWmaAdapter;
 
 import java.security.InvalidParameterException;
 

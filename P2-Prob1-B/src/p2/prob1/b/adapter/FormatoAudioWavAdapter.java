@@ -1,7 +1,7 @@
-package p2.prob1.b.adapter;
+package src.p2.prob1.b.adapter;
 
-import p2.prob1.b.FormatoAudio;
-import problema1.WAVPlayer;
+import src.p2.prob1.b.FormatoAudio;
+import src.problema1.WAVPlayer;
 
 import java.security.InvalidParameterException;
 
@@ -16,7 +16,7 @@ public class FormatoAudioWavAdapter implements FormatoAudio {
     @Override
     public void abrir(String arquivo) {
         if (arquivo == null) {
-            throw new InvalidParameterException("Nome de arquivo de audio INVÁLIDO!");
+            throw new InvalidParameterException("Nome de arquivo de audio INVÃ�LIDO!");
         }
 
         reprodutor = new WAVPlayer(arquivo);

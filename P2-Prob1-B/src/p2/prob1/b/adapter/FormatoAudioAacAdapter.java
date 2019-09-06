@@ -1,7 +1,7 @@
-package p2.prob1.b.adapter;
+package src.p2.prob1.b.adapter;
 
-import p2.prob1.b.FormatoAudio;
-import problema1.AACPlayer;
+import src.p2.prob1.b.FormatoAudio;
+import src.problema1.AACPlayer;
 
 
 public class FormatoAudioAacAdapter implements FormatoAudio {
