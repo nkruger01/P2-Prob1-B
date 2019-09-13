@@ -15,7 +15,7 @@ public class TipoEntregaPAC implements CalculoEntrega {
 			} else if (pedido.getPesoTotalPedido() > 3000 && pedido.getPesoTotalPedido() <= 5000) {
 				return 30;
 			} else if (pedido.getPesoTotalPedido() > 5000) {
-				throw new TipoEntregaInvalidoException("Peso total do pedido excedido!");
+				throw new TipoEntregaInvalidoException();
 			}
 
 		} catch (TipoEntregaInvalidoException e) {

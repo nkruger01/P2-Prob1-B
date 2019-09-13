@@ -127,10 +127,10 @@ public class Pedido {
 				valorEntrega = resultadoMotoboy.CalculaValorEntrega(this);
 				break;
 			default:
-				throw new  TipoEntregaInvalidoException("Tipo de entrega inválida!");
+				throw new  TipoEntregaInvalidoException();
 				}	
 			} catch (TipoEntregaInvalidoException e) {
-				e.printStackTrace();
+				
 			}
 		return valorEntrega;
 	}

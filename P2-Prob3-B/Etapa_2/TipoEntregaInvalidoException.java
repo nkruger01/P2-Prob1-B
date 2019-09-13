@@ -2,7 +2,8 @@ package Etapa_2;
 
 public class TipoEntregaInvalidoException extends Exception{
 
-	public TipoEntregaInvalidoException(String string) {
+	public TipoEntregaInvalidoException() {
+		System.out.println("---- TIPO DE ENTREGA INVÁLIDO ----");
 	}
 	
 }
