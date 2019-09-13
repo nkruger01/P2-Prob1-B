@@ -1,2 +1,1 @@
 Strategy = Implementado nas classes tipo entrega (TipoEntregaMotoboy(), TipoEntregaNoLocal(), TipoEntregaPAC();, TipoEntregaSEDEX();)
-Singleton = Pedido
