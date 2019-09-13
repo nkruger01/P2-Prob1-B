@@ -17,12 +17,18 @@ public class Executavel {
 		pedido.incluirItem(lapis, 1000);
 		pedido.incluirItem(grampeador, 2000);
 		
-		System.out.println("Valor dos Produtos: R$ " + pedido.getValorPedido());
-		System.out.println("Valor Entrega: R$ " + pedido.getValorEntrega());
+		Pedido pedido2 = new Pedido(1, "Nathan Kruger", new Date(), "Ao lado da FURB", "LEX");
+		pedido.incluirItem(lapis, 350);
+		pedido.incluirItem(grampeador, 500);
 		
-		System.out.println("Valor dos Produtos1: R$ " + pedido1.getValorPedido());
-		System.out.println("Valor Entrega1: R$ " + pedido1.getValorEntrega());
+		System.out.println("Valor dos Produtos pedido: R$ " + pedido.getValorPedido());
+		System.out.println("Valor Entrega pedido: R$ " + pedido.getValorEntrega());
 		
+		System.out.println("Valor dos Produtos pedido1: R$ " + pedido1.getValorPedido());
+		System.out.println("Valor Entrega1 pedido1: R$ " + pedido1.getValorEntrega());
+		
+		System.out.println("Valor dos Produtos pedido2: R$ " + pedido1.getValorPedido());
+		System.out.println("Valor Entrega pedidos2: R$ " + pedido1.getValorEntrega());
 		
 	}
 	
