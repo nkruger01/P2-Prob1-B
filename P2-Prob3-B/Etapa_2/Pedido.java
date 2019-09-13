@@ -13,7 +13,6 @@ public class Pedido {
 	private String endereco;
 	private CalculoEntrega tipoEntrega;
 	private ArrayList<ItemPedido> itensPedidos = new ArrayList<ItemPedido>();
-	public static Pedido instancia;
 
 	protected Pedido(int numero, String nomeCLiente, Date data, String endereco, CalculoEntrega tipoEntrega) {
 		this.numero = numero;
@@ -21,16 +20,6 @@ public class Pedido {
 		this.data = data;
 		this.endereco = endereco;
 		this.tipoEntrega = tipoEntrega;
-	}
-
-	protected Pedido() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public static Pedido getInstancia() {
-		if (instancia == null)
-			instancia = new Pedido();
-		return instancia;
 	}
 
 	public int getNumero() {
