@@ -11,11 +11,11 @@ public class Pedido {
 	private String nomeCLiente;
 	private Date data;
 	private String endereco;
-	private String tipoEntrega;
+	private CalculoEntrega tipoEntrega;
 	private ArrayList<ItemPedido> itensPedidos = new ArrayList<ItemPedido>();
 	public static Pedido instancia;
 
-	protected Pedido(int numero, String nomeCLiente, Date data, String endereco, String tipoEntrega) {
+	protected Pedido(int numero, String nomeCLiente, Date data, String endereco, CalculoEntrega tipoEntrega) {
 		this.numero = numero;
 		this.nomeCLiente = nomeCLiente;
 		this.data = data;
@@ -65,11 +65,11 @@ public class Pedido {
 		this.endereco = endereco;
 	}
 
-	public String getTipoEntrega() {
+	public CalculoEntrega getTipoEntrega() {
 		return tipoEntrega;
 	}
 
-	public void setTipoEntrega(String tipoEntrega) {
+	public void setTipoEntrega(CalculoEntrega tipoEntrega) {
 		this.tipoEntrega = tipoEntrega;
 	}
 
@@ -106,42 +106,14 @@ public class Pedido {
 
 	}
 
-	public double getValorEntrega() {
-		double valorEntrega = 0;
-		try {
-			switch (this.getTipoEntrega()) {
-			case "Encomenda PAC":
-				TipoEntregaPAC resultadoPAC = new TipoEntregaPAC();
-				valorEntrega = resultadoPAC.CalculaValorEntrega(this);
-				break;
-			case "SEDEX":
-				TipoEntregaSEDEX resultadoSEDEX = new TipoEntregaSEDEX();
-				valorEntrega = resultadoSEDEX.CalculaValorEntrega(this);
-				break;
-			case "Retirada no Local":
-				TipoEntregaNoLocal resultadoNoLocal =  new TipoEntregaNoLocal();
-				valorEntrega = resultadoNoLocal.CalculaValorEntrega(this);
-				break;
-			case "Motoboy":
-				TipoEntregaMotoboy resultadoMotoboy =  new TipoEntregaMotoboy();
-				valorEntrega = resultadoMotoboy.CalculaValorEntrega(this);
-				break;
-			default:
-				throw new  TipoEntregaInvalidoException();
-				}	
-			} catch (TipoEntregaInvalidoException e) {
-				
-			}
-		return valorEntrega;
+	public double getValorEntrega(Pedido pedido) throws TipoEntregaInvalidoException {
+
+		return tipoEntrega.CalculaValorEntrega(pedido);
+
 	}
-	
-	public int getQuantidadeProdutos(){
+
+	public int getQuantidadeProdutos() {
 		return itensPedidos.size() + 1;
 	}
-	
-		
-			
-}
-		
-	
 
+}
