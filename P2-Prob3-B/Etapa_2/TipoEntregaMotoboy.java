@@ -2,12 +2,12 @@ package Etapa_2;
 
 public class TipoEntregaMotoboy implements CalculoEntrega{
 
-	@Override
-	public double CalculaValorEntrega(Pedido pedido) {
+	public double CalculaValorEntrega(Pedido pedido) throws TipoEntregaInvalidoException {
 		if (pedido.getPesoTotalPedido() <= 25000 && pedido.getQuantidadeProdutos() <= 30) {
 			return 7;
-		}
-		return 0;
+		}else{
+			throw new TipoEntregaInvalidoException();
+		}		
 	}
 
 }
