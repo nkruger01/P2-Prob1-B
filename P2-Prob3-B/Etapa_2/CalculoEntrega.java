@@ -1,4 +1,4 @@
-package teste.Etapa_2;
+package Etapa_2;
 
 
 public interface CalculoEntrega {

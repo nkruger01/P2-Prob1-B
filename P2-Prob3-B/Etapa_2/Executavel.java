@@ -1,4 +1,4 @@
-package teste.Etapa_2;
+package Etapa_2;
 
 import java.util.Date;
 
@@ -21,6 +21,10 @@ public class Executavel {
 		pedido.incluirItem(lapis, 350);
 		pedido.incluirItem(grampeador, 500);
 		
+		Pedido pedido3 = new Pedido(1, "Nathan Kruger", new Date(), "Ao lado da FURB", "Motoboy");
+		pedido.incluirItem(lapis, 350);
+		pedido.incluirItem(grampeador, 500);
+		
 		System.out.println("Valor dos Produtos pedido: R$ " + pedido.getValorPedido());
 		System.out.println("Valor Entrega pedido: R$ " + pedido.getValorEntrega());
 		
@@ -29,6 +33,9 @@ public class Executavel {
 		
 		System.out.println("Valor dos Produtos pedido2: R$ " + pedido1.getValorPedido());
 		System.out.println("Valor Entrega pedidos2: R$ " + pedido1.getValorEntrega());
+		
+		System.out.println("Valor dos Produtos pedido 3: R$ " + pedido3.getValorPedido());
+		System.out.println("Valor Entrega pedidos 3: R$ " + pedido3.getValorEntrega());
 		
 	}
 	

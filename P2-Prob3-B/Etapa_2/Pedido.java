@@ -1,4 +1,4 @@
-package teste.Etapa_2;
+package Etapa_2;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -122,6 +122,10 @@ public class Pedido {
 				TipoEntregaNoLocal resultadoNoLocal =  new TipoEntregaNoLocal();
 				valorEntrega = resultadoNoLocal.CalculaValorEntrega(this);
 				break;
+			case "Motoboy":
+				TipoEntregaMotoboy resultadoMotoboy =  new TipoEntregaMotoboy();
+				valorEntrega = resultadoMotoboy.CalculaValorEntrega(this);
+				break;
 			default:
 				throw new  TipoEntregaInvalidoException("Tipo de entrega inválida!");
 				}	
@@ -129,9 +133,15 @@ public class Pedido {
 				e.printStackTrace();
 			}
 		return valorEntrega;
-		}
+	}
+	
+	public int getQuantidadeProdutos(){
+		return itensPedidos.size() + 1;
+	}
+	
+		
 			
-		}
+}
 		
 	
 
